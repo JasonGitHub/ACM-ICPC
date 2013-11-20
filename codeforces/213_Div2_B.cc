@@ -11,18 +11,12 @@ int FindLongestSeg(int* a, int n) {
       if (a[i] != a[i - 1] + a[i - 2]) {
         in_seg = false;
         max = (hi - lo + 1 > max) ? hi - lo + 1 : max;
-      } else {
-        hi = i;
       }
     } else {
-      if (a[i] == a[i - 1] + a[i - 2]) {
-        in_seg = true;
-        lo = i;
-      } else {
-        lo = i;
-        hi = i;
-      }
+      if (a[i] == a[i - 1] + a[i - 2]) in_seg = true;
+      lo = i;
     }
+    hi = i;
   }
   if (in_seg) max = (hi - lo + 1 > max) ? hi - lo + 1 : max;
   return max + 2;
