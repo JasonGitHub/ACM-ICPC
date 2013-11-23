@@ -20,18 +20,18 @@ void Init(deque<Player> &on, queue<Player> &off, int p) {
   for (int i = 0; i < p; ++i) {
     Player tmp = off.front();
     off.pop();
-    on.push_back(tmp);
+    on.push_front(tmp);
   }
 }
 
 void Rotate(deque<Player> &on, queue<Player> &off, int m) {
   for (int i = 0; i < m; ++i) {
-    Player tmp = on.back();
-    on.pop_back();
+    Player tmp = on.front();
+    on.pop_front();
     off.push(tmp);
     tmp = off.front();
     off.pop();
-    on.push_front(tmp);
+    on.push_back(tmp);
   }
 }
 
