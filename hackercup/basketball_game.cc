@@ -16,20 +16,22 @@ struct Player {
   bool operator>(const Player &p) const {return p < *this;}
 };
 
+// initialized the p players on field
 void Init(deque<Player> &on, queue<Player> &off, int p) {
   for (int i = 0; i < p; ++i) {
     Player tmp = off.front();
     off.pop();
-    on.push_front(tmp);
+    on.push_front(tmp);  // arrange elements in reverse order, so that player with higher draft number pop out first
   }
 }
 
+// rotate the players
 void Rotate(deque<Player> &on, queue<Player> &off, int m) {
   for (int i = 0; i < m; ++i) {
-    Player tmp = on.front();
+    Player tmp = on.front();  // player out
     on.pop_front();
     off.push(tmp);
-    tmp = off.front();
+    tmp = off.front();  // player in
     off.pop();
     on.push_back(tmp);
   }
