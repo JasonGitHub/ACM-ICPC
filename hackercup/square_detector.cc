@@ -15,7 +15,7 @@ bool FindStartAndSide(bool a[][20], int n, int &x, int &y, int &side) {
       if (f && i == x && a[i][j]) side = max(j - y + 1, side);
     }
   }
-  return f && side >= 2;
+  return f;
 }
 
 bool SquareDetector(bool a[][20], int n) {
